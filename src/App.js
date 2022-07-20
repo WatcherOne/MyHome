@@ -1,11 +1,17 @@
-import logo from './logo.svg';
+/*************************************************************
+ * Author: zhubo
+ * Emails: <286154864@qq.com>
+ * CreateTime: 2022-07-20 15:12:39
+ * Description: App组件的代码文件
+*************************************************************/
+
 import './App.css';
 
 function App() {
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>

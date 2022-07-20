@@ -1,8 +1,15 @@
+/*************************************************************
+ * Author: zhubo
+ * Emails: <286154864@qq.com>
+ * CreateTime: 2022-07-20 15:11:26
+ * Description: 整个应用程序的入口文件
+*************************************************************/
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+console.log(23)
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
