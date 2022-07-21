@@ -4,8 +4,9 @@
  * CreateTime: 2022-07-20 15:14:17
  * Description: 量和跟踪站点上的实际用户性能
 *************************************************************/
+import { ReportHandler } from 'web-vitals'
 
-const reportWebVitals = onPerfEntry => {
+const reportWebVitals = (onPerfEntry?: ReportHandler) => {
     if (onPerfEntry && onPerfEntry instanceof Function) {
         import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
             getCLS(onPerfEntry)

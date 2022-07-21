@@ -43,3 +43,31 @@ https://developer.mozilla.org/zh-CN/docs/Web/Manifest
 检测用户体验的标准, 通过 reportWebVitals(console.warn) 输出显示
 使用reportWebVitals函数，您可以将任何结果发送到分析端点，以测量和跟踪站点上的实际用户性能
 ```
+
+---------
+###  tsconfig.js  ###
+```
+该文件指定编译项目所需的根文件和编译器的选项
+```
+|  property  |  value  |  description  |
+|  ------    |  -----  |  ------       |
+|  compilerOptions.incremental |  true  |  TS编译器在第一次编译之后会生成一个存储编译信息的文件, 第二次编译会在第一次的基础上进行增量编译, 提高编译的速度  |
+|  compilerOptions.diagnostics |  true  |  打印诊断信息  |
+|  compilerOptions.target      |  'ES6' |  目标语言的版本  |
+|  compilerOptions.module      |  'CommonJS'/'esnext'  |  生成代码的模板标准  |
+|  compilerOptions.lib         |  ['DOM', 'ES2015', 'ES2019.Array'] |  TS需要引用的库, 即声明文件  |
+|  compilerOptions.allowJS     |  true  |  允许编译器编译JS, JSX文件   |
+|  compilerOptions.baseUrl  |  './' / 'src'  |  解析非相对模块的基地址, 默认是当前目录 |
+|  compilerOptions.removeComments |  true  |  删除注释  |
+|  compilerOptions.noEmit  |  true  |  不输出文件, 即编译后不会生成任何JS文件  |
+|  compilerOptions.jsx   |  'react-jsx'  |  指定jsx格式  |
+|  compilerOptions.noFallthroughCasesInSwitch  |  true  |  防止switch语句贯穿,即如果没有break语句后面不会执行  |
+|  compilerOptions.esModuleInterop  |  true  |   允许export= 导出, 由import from 导入   |
+|  compilerOptions.moduleResolution | 'node' |   模块解析策略,TS默认用node的解析策略  |
+|  include  |  ['src']  |  指定要编译的路径列表  |
+
+---------
+###  .jsx / .tsx  ###
+```
+1. Babel 会把 JSX 转译成一个名为 React.createElement() 函数调用
+```

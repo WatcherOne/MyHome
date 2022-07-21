@@ -1,31 +1,20 @@
-/*************************************************************
- * Author: zhubo
- * Emails: <286154864@qq.com>
- * CreateTime: 2022-07-20 15:12:39
- * Description: App组件的代码文件
-*************************************************************/
+import { lazy, Suspense } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
-import './App.css';
+const Index = lazy(() => import('./pages/index'))
+const Login = lazy(() => import('./pages/login'))
+// import router from './router'
+// @media (prefers-reduced-motion: no-preference)
 
-function App() {
-
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default function App() {
+    return (
+        <BrowserRouter>
+            <Suspense fallback={<div>Loading...</div>}>
+                <Routes>
+                    <Route path='/' component={<Index/ >}></Route>
+                    <Route path='/login' component={<Login/ >}></Route>
+                </Routes>
+            </Suspense>
+        </BrowserRouter>
+    )
 }
-
-export default App;
