@@ -11,8 +11,8 @@ export default function App() {
         <BrowserRouter>
             <Suspense fallback={<div>Loading...</div>}>
                 <Routes>
-                    <Route path='/' component={<Index/ >}></Route>
-                    <Route path='/login' component={<Login/ >}></Route>
+                    <Route path='/' element={<Index/ >}></Route>
+                    <Route path='/login' element={<Login/ >}></Route>
                 </Routes>
             </Suspense>
         </BrowserRouter>
