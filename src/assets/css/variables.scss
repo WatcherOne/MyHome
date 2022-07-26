@@ -1,1 +1,5 @@
-$primaryColor: #40ad79;
+:root:root {
+    --adm-primary-color: #40AD79;
+}
+
+$primaryColor: var(--adm-primary-color);
