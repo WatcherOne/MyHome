@@ -11,10 +11,10 @@ import reportWebVitals from './reportWebVitals'
 // import ReactDOM from 'react-dom'
 // ReactDOM.render(
 //     <App />,
-//     document.getElementById('root') as HTMLElement
+//     document.getElementById('root')
 // )
 
-const container = document.getElementById('root') as HTMLElement
+const container = document.getElementById('root')
 
 const root = ReactDOM.createRoot(container, {})
 

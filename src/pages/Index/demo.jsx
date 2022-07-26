@@ -1,12 +1,12 @@
 // 所有 React 组件都必须像纯函数一样保护它们的 props 不被更改
 // 组件是有状态组件还是无状态组件属于组件实现的细节
 // return null 可以隐藏组件,不进行任何渲染,但是不影响组件周期函数
-// 组件不能绑定事件, 只能作为 props 传入组件
+// 自定义组件不能绑定事件, 只能作为 props 传入组件
 // 并没有发现需要使用继承来构建组件层次的情况
 import React from 'react'
 
 // 函数式组件
-function Title (props:any) {
+function Title(props) {
     // React.Fragment === template (vue)
     // 短语法 <>...</>
     return (
@@ -14,17 +14,13 @@ function Title (props:any) {
     )
 }
 
-interface indexState {
-    title:string
-}
-
 // 类组件
-class Index extends React.Component<any, indexState> {
+class Index extends React.Component {
     // ref 绑定 this.$divElement.current 获得DOM节点
     // 默认情况下，你不能在函数组件上使用 ref 属性，因为它们没有实例
-    $divElement = React.createRef<HTMLDivElement>()
+    $divElement = React.createRef()
 
-    constructor(props:any) {
+    constructor(props) {
         // 将 props 传递到父类的构造函数中, Class 组件应该始终使用 props 参数来调用父类的构造函数
         super(props)
         this.state = {

@@ -13,8 +13,8 @@ export default function App() {
         <BrowserRouter>
             <Suspense fallback={LoadingPage()}>
                 <Routes>
-                    <Route path='/' element={<Index/ >}></Route>
-                    <Route path='/login' element={<Login/ >}></Route>
+                    <Route path='/' element={<Index />}></Route>
+                    <Route path='/login' element={<LoadingPage />}></Route>
                 </Routes>
             </Suspense>
         </BrowserRouter>
