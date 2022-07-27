@@ -1,0 +1,51 @@
+.index-container {
+    height: 100%;
+    .title {
+        font-size: 20px;
+        color: white;
+        text-align: center;
+        padding: 50px 0 20px;
+    }
+    .header-container {
+        background-color: $primaryColor;
+        padding: 0 10px;
+        .filter-container {
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: center;
+            padding: 10px 0;
+            .select-filter-container {
+                display: flex;
+                flex-wrap: nowrap;
+                justify-content: center;
+                padding: 5px 0;
+                color: white;
+                background: $secondColor;
+                border-radius: $borderRadius;
+                margin-right: 5px;
+                .filter-name {
+                    display: flex;
+                    align-items: center;
+                    font-size: 14px;
+                    padding: 0 10px;
+                    border-right: 1px solid #eee;
+                }
+                .filter-icon {
+                    font-size: 20px;
+                    margin: 0 10px;
+                }
+            }
+        }
+        .count-container {
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            color: $lightPrimaryColor;
+            font-size: 15px;
+            padding-bottom: 10px;
+            .income {
+                margin-right: 10px;
+            }
+        }
+    }
+}
