@@ -19,3 +19,17 @@ a {
     color: inherit;
     text-decoration: none;
 }
+
+// commonCss
+.income-money {
+    color: $incomeColor;
+}
+
+.expend-money {
+    color: $expendColor;
+}
+
+// popup
+.adm-popup .adm-popup-body {
+    background: $popBgColor;
+}

@@ -1,0 +1,28 @@
+.pop-month-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    .date-content {
+        flex: 1;
+        padding: 0 10px 20px;
+        overflow: auto;
+        .year-item {
+            line-height: 30px;
+            font-size: 14px;
+            color: $lightTextColor;
+            text-align: center;
+            padding: 15px 0 10px;
+        }
+        .month-item {
+            padding: 15px 0;
+            text-align: center;
+            font-size: 16px;
+            background: white;
+            &.active {
+                color: white;
+                background: $primaryColor;
+            }
+        }
+    }
+}

@@ -1,0 +1,24 @@
+.pop-type-container {
+    .content {
+        background: $popBgColor;
+        .adm-tabs-header {
+            background: white;
+            .adm-tabs-tab {
+                font-size: 14px;
+                color: $textColor;
+            }
+        }
+        .adm-tabs-content {
+            .type-item {
+                padding: 15px 0;
+                font-size: 16px;
+                text-align: center;
+                background: white;
+                &.active {
+                    color: white;
+                    background: $primaryColor;
+                }
+            }
+        }
+    }
+}

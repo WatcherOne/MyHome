@@ -1,12 +1,15 @@
 .index-container {
     height: 100%;
-    .title {
-        font-size: 20px;
-        color: white;
-        text-align: center;
-        padding: 50px 0 20px;
-    }
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
     .header-container {
+        .title {
+            font-size: 20px;
+            color: white;
+            text-align: center;
+            padding: 50px 0 20px;
+        }
         background-color: $primaryColor;
         padding: 0 10px;
         .filter-container {
@@ -45,6 +48,92 @@
             padding-bottom: 10px;
             .income {
                 margin-right: 10px;
+            }
+        }
+    }
+    .content-container {
+        background: $bottomFloor;
+        flex: 1;
+        overflow: auto;
+        padding: 8px;
+        padding-bottom: 18px;
+        margin-bottom: 60px;
+        .adm-card {
+            padding: 0;
+            margin-bottom: 8px;
+            .adm-card-header {
+                padding: 0;
+                .adm-card-header-title {
+                    width: 100%;
+                }
+                .card-header {
+                    line-height: 65px;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    background: #FBFBFB;
+                    border-radius: 5px;
+                    padding: 0 15px;
+                    .time {
+                        color: $darkTextColor;
+                    }
+                    .expend {
+                        display: flex;
+                        align-items: center;
+                        flex-wrap: nowrap;
+                        .money {
+                            font-weight: normal;
+                            color: $lightTextColor;
+                            margin: 0 5px;
+                        }
+                    }
+                }
+            }
+            .adm-card-body {
+                padding: 0;
+                .adm-list {
+                    border: 0;
+                    .adm-list-body {
+                        border: 0;
+                        border-radius: 5px;
+                    }
+                }
+            }
+        }
+        .bill-item {
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: center;
+            justify-content: space-between;
+            line-height: 18px;
+            .icon {
+                font-size: 40px;
+                color: $primaryColor;
+            }
+            .content {
+                display: flex;
+                flex: 1;
+                flex-direction: column;
+                padding-left: 10px;
+                .count-label {
+                    font-size: 16px;
+                }
+                .count-desc {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    font-size: 14px;
+                    color: $lightTextColor;
+                    .time {
+                        padding-right: 5px;
+                        margin-right: 5px;
+                        border-right: 1px solid $borderColor;
+                    }
+                }
+            }
+            .total {
+                font-size: 15px;
+                font-weight: bold;
             }
         }
     }

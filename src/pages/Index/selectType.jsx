@@ -2,8 +2,8 @@ import { useState } from 'react'
 import { SystemQRcodeOutline } from 'antd-mobile-icons'
 import PopSelectType from '@/components/PopSelectType'
 
-export default function SelectType(props) {
-    const { typeName } = props.item || {}
+export default function SelectType() {
+    const [typeName, setTypeName] = useState()
 
     const [visible, setVisible] = useState(false)
 
@@ -13,7 +13,12 @@ export default function SelectType(props) {
             <div onClick={() => setVisible(true)} className="filter-icon">
                 <SystemQRcodeOutline />
             </div>
-            <PopSelectType visible={visible} setVisible={setVisible} />
+            <PopSelectType
+                visible={visible}
+                setVisible={setVisible}
+                typeName={typeName}
+                setTypeName={setTypeName}
+            />
         </div>
     )
 }
