@@ -20,6 +20,20 @@ a {
     text-decoration: none;
 }
 
+.clearfix:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.shi-left {
+    float: left;
+}
+
+.shi-right {
+    float: right;
+}
+
 // commonCss
 .income-money {
     color: $incomeColor;
@@ -32,4 +46,13 @@ a {
 // popup
 .adm-popup .adm-popup-body {
     background: $popBgColor;
+    border-top-left-radius: $popBorderRadius;
+    border-top-right-radius: $popBorderRadius;
+}
+
+// top-navbar
+.adm-nav-bar {
+    color: white;
+    background: $primaryColor;
+    padding: 0 10px;
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './assets/css/common.scss'
 import App from './App'
-import 'lib-flexible'
+// import 'lib-flexible'
 import reportWebVitals from './reportWebVitals'
 
 // 老版本方式

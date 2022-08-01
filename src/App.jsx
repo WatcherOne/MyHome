@@ -6,6 +6,8 @@ import './App.scss'
 const Login = lazy(() => import('@/pages/login'))
 const BottomNav = lazy(() => import('@/pages/BottomNav'))
 const Index = lazy(() => import('@/pages/Index/index'))
+const TypeManage = lazy(() => import('@/pages/TypeManage'))
+const TypeSort = lazy(() => import('@/pages/TypeSort'))
 
 export default function App() {
     return (
@@ -17,6 +19,8 @@ export default function App() {
                         <Route path='/index' element={<Index />}></Route>
                         <Route path='/login' element={<LoadingPage />}></Route>
                     </Route>
+                    <Route path='/typeList' element={<TypeManage />}></Route>
+                    <Route path='/typeSort/:type' element={<TypeSort />}></Route>
                 </Routes>
             </Suspense>
         </BrowserRouter>

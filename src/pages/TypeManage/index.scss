@@ -1,0 +1,107 @@
+.type-list-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    .right-icon {
+        font-size: 18px;
+    }
+    .type-list-box {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        overflow: hidden;
+        .type-list-nav {
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            line-height: 40px;
+            background: white;
+            margin-bottom: 5px;
+            padding: 0 5px;
+            .btns {
+                display: flex;
+                flex: 1;
+                justify-content: center;
+                .nav-btn {
+                    font-size: 15px;
+                    padding: 0 5px;
+                }
+            }
+            .order {
+                font-size: 18px;
+            }
+            .move {
+                position: absolute;
+                bottom: 0;
+                // left: 81px;
+                width: 40px;
+                height: 3px;
+                background: $primaryColor;
+                transition: all .2s linear;
+            }
+        }
+        .type-list-content {
+            height: calc(100% - 45px);
+            display: flex;
+            flex-wrap: nowrap;
+            transition: transform .2s linear;
+            .type-list {
+                height: 100%;
+                overflow: auto;
+                flex-grow: 1;
+                flex-shrink: 0;
+                flex-basis: 100%;
+                .type-item {
+                    height: 30px;
+                    line-height: 30px;
+                    display: flex;
+                    flex-wrap: nowrap;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 5px 10px;
+                    font-size: 14px;
+                    color: $textColor;
+                    background-color: white;
+                    border-bottom: 1px solid $borderColor;
+                    .operate {
+                        font-size: 16px;
+                    }
+                }
+            }
+        }
+    }
+}
+.pop-tip-content {
+    padding: 10px 15px;
+    line-height: 22px;
+    .title {
+        font-size: 15px;
+        color: $darkTextColor;
+    }
+    .content {
+        font-size: 13px;
+        color: $lightTextColor;
+        margin-bottom: 15px;
+    }
+}
+.operate-list {
+    .each-operate {
+        font-size: 14px;
+        padding: 0 18px;
+        line-height: 40px;
+        border-bottom: 1px solid $borderColor;
+        &.operate-object {
+            font-size: 18px;
+            font-weight: bold;
+            line-height: 40px;
+            padding: 5px 15px;
+            background: white;
+            border-top-left-radius: $popBorderRadius;
+            border-top-right-radius: $popBorderRadius;
+        }
+    }
+}

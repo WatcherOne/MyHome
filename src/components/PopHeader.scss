@@ -8,6 +8,8 @@
     border-bottom: 1px solid $borderColor;
     position: relative;
     background: white;
+    border-top-left-radius: $popBorderRadius;
+    border-top-right-radius: $popBorderRadius;
     .icon {
         height: 100%;
         position: absolute;

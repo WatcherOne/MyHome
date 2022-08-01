@@ -101,9 +101,7 @@ export default function PopSelectMonth(props) {
             visible={visible}
             onMaskClick={() => setVisible(false)}
             bodyStyle={{
-                height: '60vh',
-                borderTopLeftRadius: '8px',
-                borderTopRightRadius: '8px'
+                height: '60vh'
             }}
         >
             <div className='pop-month-container'>
