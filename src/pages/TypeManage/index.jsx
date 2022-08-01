@@ -52,6 +52,7 @@ export default function TypeList() {
             <Popup
                 visible={visibleOperate}
                 onMaskClick={() => closePopOperate()}
+                stopPropagation={['click', 'touchStart', 'touchMove', 'touchEnd']}
                 bodyStyle={{
                     height: '40vh'
                 }} 
@@ -178,9 +179,9 @@ export default function TypeList() {
             <div className='type-list-box'>
                 <div className="type-list-nav">
                     <div ref={navWrapper} className='btns'>
-                        <div onClick={() => changeNav(0)} className="nav-btn">支出</div>
-                        <div onClick={() => changeNav(1)} className="nav-btn">收入</div>
-                        <div onClick={() => changeNav(2)} className="nav-btn">不计入收支</div>
+                        <div onClick={() => changeNav(0)} className={`nav-btn ${navType === 0 ? 'active' : ''}`}>支出</div>
+                        <div onClick={() => changeNav(1)} className={`nav-btn ${navType === 1 ? 'active' : ''}`}>收入</div>
+                        <div onClick={() => changeNav(2)} className={`nav-btn ${navType === 2 ? 'active' : ''}`}>不计入收支</div>
                     </div>
                     <div className='order'>
                         <UnorderedListOutline onClick={() => navigate(`/typeSort/${navType}`)} />

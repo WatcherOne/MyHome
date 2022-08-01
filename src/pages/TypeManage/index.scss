@@ -29,6 +29,9 @@
                 .nav-btn {
                     font-size: 15px;
                     padding: 0 5px;
+                    &.active {
+                        color: $primaryColor;
+                    }
                 }
             }
             .order {
@@ -56,13 +59,14 @@
                 flex-shrink: 0;
                 flex-basis: 100%;
                 .type-item {
-                    height: 30px;
-                    line-height: 30px;
+                    height: 40px;
+                    line-height: 40px;
                     display: flex;
                     flex-wrap: nowrap;
                     justify-content: space-between;
                     align-items: center;
                     padding: 5px 10px;
+                    box-sizing: border-box;
                     font-size: 14px;
                     color: $textColor;
                     background-color: white;

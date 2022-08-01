@@ -22,11 +22,17 @@ export default function TypeSort() {
         target.classList.add('is-dragging')
         target.style = `left:${offsetLeft};top:${offsetTop}`
     }
-    const dragMove = (e) => {
+    const dragStart1 = (e) => {
+        console.log(1, e)
+    }
+    const dragEnter = (e) => {
         console.log(2, e)
     }
-    const dragEnd = (e) => {
+    const dragMove = (e) => {
         console.log(3, e)
+    }
+    const dragEnd = (e) => {
+        console.log(4, e)
     }
 
     const renderList = () => {
