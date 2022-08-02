@@ -52,7 +52,6 @@ export default function TypeList() {
             <Popup
                 visible={visibleOperate}
                 onMaskClick={() => closePopOperate()}
-                stopPropagation={['click', 'touchStart', 'touchMove', 'touchEnd']}
                 bodyStyle={{
                     height: '40vh'
                 }} 
@@ -76,7 +75,7 @@ export default function TypeList() {
     const renderTypeList = () => {
         return [0, 1, 2].map(index => {
             return (
-                <div className='type-list' key={index}>
+                <div onScroll={slideScroll} className='type-list' key={index}>
                     {
                         mockList[index].map(item => {
                             const { id, name } = item
@@ -104,21 +103,36 @@ export default function TypeList() {
     useEffect(() => {
         listContainer.current && setRootWidth(listContainer.current.clientWidth)
     }, [listContainer])
-    const [moveStart, setMoveStart] = useState()
-    const [moveEnd, setMoveEnd] = useState()
+    const [isMove, setIsMove] = useState(false)
+    const [moveStart, setMoveStart] = useState({ x: 0, y: 0 })
+    const [moveEnd, setMoveEnd] = useState({ x: 0, y: 0 })
     const [moveLeft, setMoveLeft] = useState(0)
+    const slideScroll = () => {
+        console.log(1)
+        setIsMove(false)
+    }
     const slideStart = (e) => {
-        const { pageX, clientX } = e.touches[0]
-        setMoveStart(pageX || clientX)
+        const { pageX, pageY } = e.touches[0]
+        setMoveStart({ x: pageX, y: pageY })
     }
     const slideMove = (e) => {
-        const { pageX, clientX } = e.touches[0]
-        setMoveEnd(pageX || clientX)
-        const distance = (pageX || clientX) - moveStart
-        moveListContainer(distance + moveLeft)
+        console.log(e)
+        const { x, y } = moveStart
+        const { pageX, pageY } = e.touches[0]
+        const w = Math.abs(pageX - x)
+        const h = Math.abs(pageY - y)
+        if (w > h) {
+            setIsMove(true)
+            setMoveEnd({ x: pageX, y: pageY })
+            const distance = pageX - x
+            moveListContainer(distance + moveLeft)
+        } else {
+            setIsMove(false)
+        }
     }
     const slideEnd = () => {
-        const distance = moveEnd - moveStart
+        if (!isMove) return
+        const distance = moveEnd.x - moveStart.x
         if (Math.abs(distance) > 150) {
             // 向右滑动
             if (distance > 0) {
@@ -188,6 +202,7 @@ export default function TypeList() {
                     </div>
                     <div ref={moveWrapper} className="move"></div>
                 </div>
+                {/* Swiper 走马灯原理去替换优化 */}
                 <div
                     ref={listContainer}
                     onTouchStart={slideStart}
@@ -196,8 +211,8 @@ export default function TypeList() {
                     className='type-list-content'
                 >
                     { renderTypeList() }
-                    { popOperate() }
                 </div>
+                { popOperate() }
             </div>
         </div>
     )
