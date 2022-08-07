@@ -20,7 +20,11 @@ const List = [
         { id: 28, name: '娱乐1', icon: 'iconyule' },
         { id: 29, name: '汽车1', icon: 'iconqiche' },
         { id: 30, name: '数码1', icon: 'iconshuma' },
-        { id: 31, name: '教育1', icon: 'icontubiaozhizuomoban-' }
+        { id: 31, name: '教育1', icon: 'icontubiaozhizuomoban-' },
+        { id: 32, name: '娱乐1', icon: 'iconyule' },
+        { id: 33, name: '汽车1', icon: 'iconqiche' },
+        { id: 34, name: '数码1', icon: 'iconshuma' },
+        { id: 35, name: '教育1', icon: 'icontubiaozhizuomoban-' }
     ],
     [
         { id: 17, name: '工资', icon: 'icongongzi' },

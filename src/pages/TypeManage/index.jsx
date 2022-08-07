@@ -1,4 +1,4 @@
-import { NavBar, Popup } from 'antd-mobile'
+import { NavBar, Popup, Swiper } from 'antd-mobile'
 import { QuestionCircleOutline, UnorderedListOutline, MoreOutline } from 'antd-mobile-icons'
 import { useNavigate } from 'react-router-dom'
 import PopHeader from '@/components/PopHeader'
@@ -72,108 +72,36 @@ export default function TypeList() {
         setTypeName(name)
         setVisibleOperate(true)
     }
-    const renderTypeList = () => {
-        return [0, 1, 2].map(index => {
-            return (
-                <div onScroll={slideScroll} className='type-list' key={index}>
-                    {
-                        mockList[index].map(item => {
-                            const { id, name } = item
-                            return (
-                                <div className='type-item' key={id}>
-                                    <div className='item-title'>
-                                        <div className='item-icon'></div>
-                                        <div className='item-name'>{name}</div>
-                                    </div>
-                                    <div className='operate'>
-                                        <MoreOutline onClick={() => operateCurrent(item)} />
-                                    </div>
+    const changeNavType = (index) => {
+        setNavType(index)
+        swipeTo(index)
+    }
+    const swiperItem = [0, 1, 2].map(index => (
+        <Swiper.Item key={index}>
+            <div className='type-list'>
+                {
+                    mockList[index].map(item => {
+                        const { id, name } = item
+                        return (
+                            <div className='type-item' key={id}>
+                                <div className='item-title'>
+                                    <div className='item-icon'></div>
+                                    <div className='item-name'>{name}</div>
                                 </div>
-                            )
-                        })
-                    }
-                </div>
-            )
-        })
-    }
-
-    // 左右滑动
-    const listContainer = useRef(null)
-    const [rootWidth, setRootWidth] = useState(0)
-    useEffect(() => {
-        listContainer.current && setRootWidth(listContainer.current.clientWidth)
-    }, [listContainer])
-    const [isMove, setIsMove] = useState(false)
-    const [moveStart, setMoveStart] = useState({ x: 0, y: 0 })
-    const [moveEnd, setMoveEnd] = useState({ x: 0, y: 0 })
-    const [moveLeft, setMoveLeft] = useState(0)
-    const slideScroll = () => {
-        console.log(1)
-        setIsMove(false)
-    }
-    const slideStart = (e) => {
-        const { pageX, pageY } = e.touches[0]
-        setMoveStart({ x: pageX, y: pageY })
-    }
-    const slideMove = (e) => {
-        console.log(e)
-        const { x, y } = moveStart
-        const { pageX, pageY } = e.touches[0]
-        const w = Math.abs(pageX - x)
-        const h = Math.abs(pageY - y)
-        if (w > h) {
-            setIsMove(true)
-            setMoveEnd({ x: pageX, y: pageY })
-            const distance = pageX - x
-            moveListContainer(distance + moveLeft)
-        } else {
-            setIsMove(false)
-        }
-    }
-    const slideEnd = () => {
-        if (!isMove) return
-        const distance = moveEnd.x - moveStart.x
-        if (Math.abs(distance) > 150) {
-            // 向右滑动
-            if (distance > 0) {
-                if (moveLeft === -rootWidth * 2) {
-                    setListContainer(distance + moveLeft, -rootWidth)
-                    changeNav(1)
-                } else {
-                    setListContainer(distance + moveLeft, 0)
-                    changeNav(0)
+                                <div className='operate'>
+                                    <MoreOutline onClick={() => operateCurrent(item)} />
+                                </div>
+                            </div>
+                        )
+                    })
                 }
-            // 向左滑动
-            } else {
-                if (moveLeft === 0) {
-                    setListContainer(distance + moveLeft, -rootWidth)
-                    changeNav(1)
-                } else {
-                    setListContainer(distance + moveLeft, -rootWidth * 2)
-                    changeNav(2)
-                }
-            }
-        } else {
-            setListContainer(distance + moveLeft, moveLeft)
-        }
-    }
-    const moveListContainer = (distance) => {
-        listContainer.current.style = `transform: translate3d(${distance}px, 0px, 0px)`
-    }
-    const setListContainer = (currentPosition, targetPosition) => {
-        const differ = targetPosition - currentPosition
-        const count = Math.abs(differ)
-        let start = currentPosition
-        for (let i = 0; i <= count; i++) {
-            listContainer.current.style = `transform: translate3d(${start}px, 0px, 0px)`
-            differ > 0 ? start++ : start--
-        }
-    }
+            </div>
+        </Swiper.Item>
+    ))
 
-    const changeNav = (type) => {
-        setNavType(type)
-        setListContainer(moveLeft, -rootWidth * type)
-        setMoveLeft(-rootWidth * type)
+    const swiperRef = useRef(null)
+    const swipeTo = (index) => {
+        swiperRef.current?.swipeTo(index)
     }
 
     const navWrapper = useRef(null)
@@ -193,25 +121,21 @@ export default function TypeList() {
             <div className='type-list-box'>
                 <div className="type-list-nav">
                     <div ref={navWrapper} className='btns'>
-                        <div onClick={() => changeNav(0)} className={`nav-btn ${navType === 0 ? 'active' : ''}`}>支出</div>
-                        <div onClick={() => changeNav(1)} className={`nav-btn ${navType === 1 ? 'active' : ''}`}>收入</div>
-                        <div onClick={() => changeNav(2)} className={`nav-btn ${navType === 2 ? 'active' : ''}`}>不计入收支</div>
+                        <div onClick={() => changeNavType(0)} className={`nav-btn ${navType === 0 ? 'active' : ''}`}>支出</div>
+                        <div onClick={() => changeNavType(1)} className={`nav-btn ${navType === 1 ? 'active' : ''}`}>收入</div>
+                        <div onClick={() => changeNavType(2)} className={`nav-btn ${navType === 2 ? 'active' : ''}`}>不计入收支</div>
                     </div>
                     <div className='order'>
                         <UnorderedListOutline onClick={() => navigate(`/typeSort/${navType}`)} />
                     </div>
                     <div ref={moveWrapper} className="move"></div>
                 </div>
-                {/* Swiper 走马灯原理去替换优化 */}
-                <div
-                    ref={listContainer}
-                    onTouchStart={slideStart}
-                    onTouchMove={slideMove}
-                    onTouchEnd={slideEnd}
+                <Swiper
+                    ref={swiperRef}
+                    onIndexChange={(index => setNavType(index))}
+                    indicator={() => null}
                     className='type-list-content'
-                >
-                    { renderTypeList() }
-                </div>
+                >{swiperItem}</Swiper>
                 { popOperate() }
             </div>
         </div>
