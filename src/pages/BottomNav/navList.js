@@ -11,6 +11,6 @@ export const leftNavList = [
 ]
 
 export const rightNavList = [
-    { id: 2, title: '账单', icon: <PayCircleOutline />, link: '/typeList' },
+    { id: 2, title: '账单', icon: <PayCircleOutline />, link: '/typeManage' },
     { id: 3, title: '我的', icon: <UserCircleOutline />, link: '/myself' }
 ]

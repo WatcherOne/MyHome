@@ -1,9 +1,10 @@
-import { Outlet, NavLink } from 'react-router-dom'
+import { Outlet, NavLink, useNavigate } from 'react-router-dom'
 import { EditSFill } from 'antd-mobile-icons'
 import { leftNavList, rightNavList } from './navList'
 import './index.scss'
 
 export default function BottomNav() {
+    const navigate = useNavigate()
 
     const renderNavItem = (item) => {
         const { id, link, icon, title } = item
@@ -30,7 +31,7 @@ export default function BottomNav() {
                 </div>
                 <div className='center-operate'>
                     <div className='wrapper'>
-                        <div className='icon-box'>
+                        <div onClick={() => navigate('/addBill')} className='icon-box'>
                             <EditSFill />
                         </div>
                     </div>

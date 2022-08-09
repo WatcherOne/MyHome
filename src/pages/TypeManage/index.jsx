@@ -4,9 +4,10 @@ import { useNavigate } from 'react-router-dom'
 import PopHeader from '@/components/PopHeader'
 import { useEffect, useRef, useState } from 'react'
 import mockList from '@/mock/list'
+import TypeList from './typeList'
 import './index.scss'
 
-export default function TypeList() {
+export default function TypeManage() {
     const navigate = useNavigate()
 
     const [visibleTip, setVisibleTip] = useState(false)
@@ -115,10 +116,12 @@ export default function TypeList() {
         }
     }, [navType])
 
+    const operateIcon = <UnorderedListOutline onClick={() => navigate(`/typeSort/${navType}`)} />
+
     return (
         <div className="type-list-container">
             <NavBar right={rightIcon()} onBack={() => navigate(-1)}>分类管理</NavBar>
-            <div className='type-list-box'>
+            {/* <div className='type-list-box'>
                 <div className="type-list-nav">
                     <div ref={navWrapper} className='btns'>
                         <div onClick={() => changeNavType(0)} className={`nav-btn ${navType === 0 ? 'active' : ''}`}>支出</div>
@@ -137,7 +140,19 @@ export default function TypeList() {
                     className='type-list-content'
                 >{swiperItem}</Swiper>
                 { popOperate() }
-            </div>
+            </div> */}
+            <TypeList
+                rightIcon={operateIcon}
+                navType={navType}
+                changeNavType={changeNavType}>
+                <Swiper
+                    ref={swiperRef}
+                    onIndexChange={(index => setNavType(index))}
+                    indicator={() => null}
+                    className='type-list-content'
+                >{swiperItem}</Swiper>
+                { popOperate() }
+            </TypeList>
         </div>
     )
 }

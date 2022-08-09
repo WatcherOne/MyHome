@@ -6,76 +6,34 @@
     .right-icon {
         font-size: 18px;
     }
-    .type-list-box {
+    .type-list-content {
+        height: calc(100% - 45px);
         display: flex;
-        flex: 1;
-        flex-direction: column;
         flex-wrap: nowrap;
-        overflow: hidden;
-        .type-list-nav {
-            display: flex;
-            flex-wrap: nowrap;
-            justify-content: space-between;
-            align-items: center;
-            position: relative;
-            line-height: 40px;
-            background: white;
-            margin-bottom: 5px;
-            padding: 0 5px;
-            .btns {
+        transition: transform .2s linear;
+        .type-list {
+            height: 100%;
+            overflow: auto;
+            flex-grow: 1;
+            flex-shrink: 0;
+            flex-basis: 100%;
+            .type-item {
+                height: 40px;
+                line-height: 40px;
                 display: flex;
-                flex: 1;
-                justify-content: center;
-                .nav-btn {
-                    font-size: 15px;
-                    padding: 0 5px;
-                    &.active {
-                        color: $primaryColor;
-                    }
-                }
-            }
-            .order {
-                font-size: 18px;
-            }
-            .move {
-                position: absolute;
-                bottom: 0;
-                // left: 81px;
-                width: 40px;
-                height: 3px;
-                background: $primaryColor;
-                transition: all .2s linear;
-            }
-        }
-        .type-list-content {
-            height: calc(100% - 45px);
-            display: flex;
-            flex-wrap: nowrap;
-            transition: transform .2s linear;
-            .type-list {
-                height: 100%;
-                overflow: auto;
-                flex-grow: 1;
-                flex-shrink: 0;
-                flex-basis: 100%;
-                .type-item {
-                    height: 40px;
-                    line-height: 40px;
-                    display: flex;
-                    flex-wrap: nowrap;
-                    justify-content: space-between;
-                    align-items: center;
-                    padding: 5px 10px;
-                    box-sizing: border-box;
-                    font-size: 16px;
-                    color: $textColor;
-                    background-color: white;
-                    border-bottom: 1px solid $borderColor;
-                    .operate {
-                        font-size: 25px;
-                        .antd-mobile-icon {
-                            transform: rotate(90deg);
-                        }
+                flex-wrap: nowrap;
+                justify-content: space-between;
+                align-items: center;
+                padding: 5px 10px;
+                box-sizing: border-box;
+                font-size: 16px;
+                color: $textColor;
+                background-color: white;
+                border-bottom: 1px solid $borderColor;
+                .operate {
+                    font-size: 25px;
+                    .antd-mobile-icon {
+                        transform: rotate(90deg);
                     }
                 }
             }

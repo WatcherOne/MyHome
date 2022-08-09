@@ -1,0 +1,42 @@
+.type-list-box {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    .type-list-nav {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        line-height: 40px;
+        background: white;
+        margin-bottom: 5px;
+        padding: 0 5px;
+        .btns {
+            display: flex;
+            flex: 1;
+            justify-content: center;
+            .nav-btn {
+                font-size: 15px;
+                padding: 0 5px;
+                &.active {
+                    color: $primaryColor;
+                }
+            }
+        }
+        .order {
+            font-size: 18px;
+        }
+        .move {
+            position: absolute;
+            bottom: 0;
+            // left: 81px;
+            width: 40px;
+            height: 3px;
+            background: $primaryColor;
+            transition: all .2s linear;
+        }
+    }
+}
