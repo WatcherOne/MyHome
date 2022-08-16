@@ -1,0 +1,68 @@
+.add-bill-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    .type-list-content {
+        .type-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            .type-item {
+                width: 25%;
+                height: 50px;
+                margin-top: 10px;
+                padding: 0 10px;
+                box-sizing: border-box;
+                .item-icon {
+                    border-radius: 50%;
+                    text-align: center;
+                    width: 30px;
+                    height: 30px;
+                    line-height: 30px;
+                    margin: 0 auto;
+                    &.active {
+                        color: white;
+                        background-color: #ED8870;
+                        animation: bounce, 0.2s;
+                    }
+                }
+                .item-name {
+                    text-align: center;
+                    margin-top: 5px;
+                }
+            }
+        }
+        @keyframes bounce {
+            0% {
+                transform: scale(1, 1);
+                opacity: 0;
+            }
+        
+            25% {
+                transform: scale(1.1, 1.1);
+                opacity: 0.25;
+            }
+        
+            50% {
+                transform: scale(1.2, 1.2);
+                opacity: 0.50;
+            }
+        
+            75% {
+                transform: scale(1.1, 1.1);
+                opacity: 0.75;
+            }
+        
+            100% {
+                transform: scale(1, 1);
+                opacity: 1;
+            }
+        }
+    }
+    .param-list {
+        .remark-cost {
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+}

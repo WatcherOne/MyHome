@@ -1,6 +1,6 @@
 import moment from 'moment'
 import { Popup, Grid } from 'antd-mobile'
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useMemo, useRef, useState } from 'react'
 import PopHeader from './PopHeader'
 import './PopSelectMonth.scss'
 
@@ -16,14 +16,9 @@ export default function PopSelectMonth(props) {
     }, [selectedDate])
 
     const wrapper = useRef(null)
-
-    useEffect(() => {
-        if (visible) {
-            if (wrapper.current) {
-                setTimeout(() => wrapper.current.scrollTop = 0)
-            }
-        }
-    }, [visible])
+    if (wrapper.current) {
+        wrapper.current.scrollTop = 0
+    }
 
     const closePop = () => {
         setVisible(false)

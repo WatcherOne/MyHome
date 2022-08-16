@@ -37,12 +37,20 @@ a {
 }
 
 // commonCss
-.income-money {
+.income-c {
     color: $incomeColor;
 }
 
-.expend-money {
+.income-bg {
+    background-color: $incomeColor;
+}
+
+.expend-c {
     color: $expendColor;
+}
+
+.expend-bg {
+    background-color: $expendColor;
 }
 
 // popup

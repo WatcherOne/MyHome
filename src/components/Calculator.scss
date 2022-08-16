@@ -1,0 +1,46 @@
+.calution-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .each-box {
+        width: calc(25% - 4px);
+        height: 40px;
+        line-height: 40px;
+        margin-top: 5px;
+        padding: 0 2px;
+        .each-code {
+            height: 100%;
+            border-radius: 5px;
+            font-size: 24px;
+            color: $darkTextColor;
+            background-color: white;
+            text-align: center;
+        }
+    }
+    .each-group-3 {
+        display: flex;
+        flex: 1;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        .each-box {
+            width: calc(100% / 3 - 4px);
+        }
+    }
+    .each-group {
+        &.each-box {
+            height: 85px;
+            line-height: 85px;
+            .each-code {
+                color: white;
+                font-size: 16px;
+                font-weight: bold;
+                &.income-bg {
+                    background-color: $incomeColor;
+                }
+                &.expend-bg {
+                    background-color: $expendColor;
+                }
+            }
+        }
+    }
+}

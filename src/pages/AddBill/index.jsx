@@ -1,9 +1,23 @@
-import { NavBar, Swiper } from 'antd-mobile'
+import { NavBar, Swiper, Input } from 'antd-mobile'
 import { UnorderedListOutline } from 'antd-mobile-icons'
 import { useRef, useState } from 'react'
-import { useNavigate, MoreOutline } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import mockList from '@/mock/list'
-import TypeList from './typeList'
+import TypeList from '@/pages/TypeManage/typeList'
+import Calculator from '@/components/Calculator'
+import './index.scss'
+
+const Parameter = () => {
+    return (
+        <div className='param-list'>
+            <div className='remark-cost'>
+                <Input />
+                <div className='show-cose income-c'>88.36</div>
+            </div>
+            <div className='date'>2022-08-16</div>
+        </div>
+    )
+}
 
 export default function AddBill() {
     const navigate = useNavigate()
@@ -21,10 +35,8 @@ export default function AddBill() {
                         const { id, name } = item
                         return (
                             <div className='type-item' key={id}>
-                                <div className='item-title'>
-                                    <div className='item-icon'></div>
-                                    <div className='item-name'>{name}</div>
-                                </div>
+                                <div className='item-icon'></div>
+                                <div className='item-name'>{name}</div>
                             </div>
                         )
                     })
@@ -43,7 +55,6 @@ export default function AddBill() {
     return (
         <div className="add-bill-container">
             <NavBar onBack={() => navigate(-1)}>新增账单</NavBar>
-            <div className='type-list'></div>
             <TypeList
                 rightIcon={operateIcon}
                 navType={navType}
@@ -55,6 +66,8 @@ export default function AddBill() {
                     className='type-list-content'
                 >{swiperItem}</Swiper>
             </TypeList>
+            <Parameter />
+            <Calculator billType={navType} />
         </div>
     )
 }

@@ -4,25 +4,13 @@ import SelectType from './selectType'
 import SelectMonth from './selectMonth'
 import './index.scss'
 import { list } from '../../mock/item'
-import { useState } from 'react'
 
 export default function Index() {
-
-    const [test] = useState(() => init())
-
-    console.log(test)
-    function init () {
-        console.log('test')
-        return 3
-    }
-
-    const [count, setCount] = useState(1)
-    console.log(count)
 
     const renderHeader = () => {
         return (
             <>
-                <div onClick={() => setCount(2)} className='title'>账单本{test}-{count}</div>
+                <div className='title'>账单本</div>
                 <SearchBar style={{ '--background': '#ffffff' }} placeholder='请输入检索内容'/>
                 <div className='filter-container'>
                     <SelectType />
@@ -84,7 +72,7 @@ export default function Index() {
                                 <div className='desc'>{mark}</div>
                             </div>
                         </div>
-                        <div className={count > 0 ? 'total income-money' : 'total'}>{count > 0 ? `+${count}` : count}</div>
+                        <div className={count > 0 ? 'total income-c' : 'total'}>{count > 0 ? `+${count}` : count}</div>
                     </div>
                 </List.Item>
             )
