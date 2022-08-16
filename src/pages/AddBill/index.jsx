@@ -7,11 +7,16 @@ import TypeList from '@/pages/TypeManage/typeList'
 import Calculator from '@/components/Calculator'
 import './index.scss'
 
-const Parameter = () => {
+const Parameter = (props) => {
+    const { remark, setRemark } = props
+    console.log('Parameter')
     return (
         <div className='param-list'>
             <div className='remark-cost'>
-                <Input />
+                <Input
+                    value={remark}
+                    onChange={(value) => setRemark(value)}
+                />
                 <div className='show-cose income-c'>88.36</div>
             </div>
             <div className='date'>2022-08-16</div>
@@ -50,7 +55,10 @@ export default function AddBill() {
         swiperRef.current?.swipeTo(index)
     }
 
+    console.log('AddBill')
     const operateIcon = <UnorderedListOutline onClick={() => navigate(`/typeSort/${navType}`)} />
+
+    const [remark, setRemark] = useState()
 
     return (
         <div className="add-bill-container">
@@ -66,7 +74,7 @@ export default function AddBill() {
                     className='type-list-content'
                 >{swiperItem}</Swiper>
             </TypeList>
-            <Parameter />
+            <Parameter remark={remark} setRemark={setRemark} />
             <Calculator billType={navType} />
         </div>
     )

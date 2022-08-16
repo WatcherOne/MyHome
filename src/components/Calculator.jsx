@@ -11,6 +11,8 @@ const renderSeq = (serialArr) => {
 export default function Calculator (props) {
     const { billType } = props
 
+    console.log('计算器')
+
     return (
         <div className="calution-container">
             { renderSeq([1,2,3]) }
