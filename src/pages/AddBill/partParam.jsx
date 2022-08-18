@@ -1,12 +1,12 @@
 import { useContext } from 'react'
 import { Input } from 'antd-mobile'
-import { BillContext } from './provider'
+import { BillAPIContext, BillParamContext } from './provider'
 
 export default function PartParam () {
     console.log('Parameter')
 
-    const { billObj, setBillRemark } = useContext(BillContext)
-    const { billRemark, billDate } = billObj
+    const { setBillRemark } = useContext(BillAPIContext)
+    const { billRemark } = useContext(BillParamContext)
 
     return (
         <div className='param-list'>
@@ -18,7 +18,7 @@ export default function PartParam () {
                 />
                 <div className='show-cose income-c'>88.36</div>
             </div>
-            <div className='date'>{billDate}</div>
+            {/* <div className='date'>{billDate}</div> */}
         </div>
     )
 }

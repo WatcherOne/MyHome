@@ -1,12 +1,13 @@
 import { useContext } from 'react'
-import { BillContext } from './provider'
+import { BillTypeContext } from './provider'
 import Calculator from '@/components/Calculator'
 
 export default function PartCalulator () {
     console.log('计算器外部')
-    // const { billType } = useContext(BillContext)
-    // console.log(billType)
-    // const { billType } = billObj
+    const { billType } = useContext(BillTypeContext)
 
-    return <Calculator></Calculator>
+    // return useMemo(() => <Calculator type={billType}></Calculator>, [billType])
+    return (
+        <Calculator type={billType}></Calculator>
+    )
 }

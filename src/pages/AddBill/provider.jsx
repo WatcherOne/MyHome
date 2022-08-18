@@ -2,6 +2,7 @@ import { createContext, useMemo, useState } from 'react'
 import moment from 'moment'
 
 const nowDate = moment().format('yyyy-MM-dd')
+
 const defaultValue = {
     // 默认值
     billType: 0,
@@ -10,30 +11,36 @@ const defaultValue = {
     billCost: 0
 }
 
-export const BillContext = createContext(null)
+export const BillAPIContext = createContext(null)
+export const BillTypeContext = createContext(null)
+export const BillParamContext = createContext(null)
 
 export default function BillProvider ({ children }) {
-    console.log('222')
+    console.log('provider')
 
-    const [billObj, setBillObj] = useState(defaultValue)
+    const [state, setState] = useState(defaultValue)
 
-    const value = useMemo(() => {
+    const api = useMemo(() => {
         const setBillType = (billType) => {
-            setBillObj({ ...billObj, billType })
+            setState({ ...state, billType })
         }
 
         const setBillRemark = (billRemark) => {
-            setBillObj({ ...billObj, billRemark })
+            setState({ ...state, billRemark })
         }
 
         return {
-            billObj,
             setBillType,
             setBillRemark
         }
-    }, [billObj])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     return (
-        <BillContext.Provider value={value}>{ children }</BillContext.Provider>
+        <BillAPIContext.Provider value={api}>
+            <BillTypeContext.Provider value={{ billType: state.billType }}>
+                <BillParamContext.Provider value={{ billRemark: state.billRemark }}>{ children }</BillParamContext.Provider>
+            </BillTypeContext.Provider>
+        </BillAPIContext.Provider>
     )
 }

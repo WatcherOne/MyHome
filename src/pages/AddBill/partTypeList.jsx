@@ -2,7 +2,7 @@ import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Swiper } from 'antd-mobile'
 import { UnorderedListOutline } from 'antd-mobile-icons'
-import { BillContext } from './provider'
+import { BillAPIContext, BillTypeContext } from './provider'
 import TypeList from '@/pages/TypeManage/typeList'
 import mockList from '@/mock/list'
 
@@ -10,8 +10,8 @@ export default function PartTypeList () {
     console.log('partTypeList')
 
     const navigate = useNavigate()
-    const { billObj, setBillType } = useContext(BillContext)
-    const { billType } = billObj
+    const { setBillType } = useContext(BillAPIContext)
+    const { billType } = useContext(BillTypeContext)
 
     const swiperItem = [0, 1, 2].map(index => (
         <Swiper.Item key={index}>
