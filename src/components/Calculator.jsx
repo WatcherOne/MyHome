@@ -9,9 +9,9 @@ const renderSeq = (serialArr) => {
 }
 
 export default function Calculator (props) {
-    const { billType } = props
+    console.log('计算器基础组件')
 
-    console.log('计算器')
+    const { type } = props
 
     return (
         <div className="calution-container">
@@ -39,7 +39,7 @@ export default function Calculator (props) {
                 </div>
             </div>
             <div className="each-group each-box">
-                <div className={`each-code ${billType ? 'income-bg' : 'expend-bg'}`}>完成</div>
+                <div className={`each-code ${type ? 'income-bg' : 'expend-bg'}`}>完成</div>
             </div>
         </div>
     )
